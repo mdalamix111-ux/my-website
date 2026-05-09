@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Sports Hub</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background: #111;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero button {
+      padding: 10px 20px;
+      border: none;
+      background: white;
+      color: black;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    /* News */
+    .news {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      margin: 15px auto;
+      padding: 15px;
+      width: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-<body style="background:black;color:white;text-align:center;margin-top:100px;font-family:Arial;">
-  <h1>Welcome Brother 😄</h1>
-  <p>My first GitHub website is live!</p>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>⚽ My Sports Hub</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Football</a>
+      <a href="#">Cricket</a>
+      <a href="#">Basketball</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Welcome to Sports World</h2>
+    <p>Live scores, news & updates all in one place</p>
+    <button onclick="showAlert()">Get Latest News</button>
+  </section>
+
+  <!-- News -->
+  <section class="news">
+    <h2>🔥 Latest Sports News</h2>
+
+    <div class="card">
+      <h3>Football Update</h3>
+      <p>Messi scores a hat-trick in latest match!</p>
+    </div>
+
+    <div class="card">
+      <h3>Cricket Update</h3>
+      <p>Bangladesh wins thrilling match!</p>
+    </div>
+
+    <div class="card">
+      <h3>Basketball Update</h3>
+      <p>NBA finals heat up with close competition.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 My Sports Hub | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function showAlert() {
+      alert("🔥 Latest Sports News Loading...");
+    }
+  </script>
+
 </body>
 </html>
