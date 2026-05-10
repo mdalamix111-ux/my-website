@@ -1,124 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Sports Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SportSurge X</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
     }
 
-    /* Header */
-    header {
-      background: #111;
-      color: white;
-      padding: 15px;
-      text-align: center;
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
     }
 
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
+    /* Animated Background */
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#ff004c;
+      filter:blur(180px);
+      top:-100px;
+      left:-100px;
+      z-index:-1;
+      opacity:0.5;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#0066ff;
+      filter:blur(180px);
+      bottom:-100px;
+      right:-100px;
+      z-index:-1;
+      opacity:0.5;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:700;
+    }
+
+    .logo span{
+      color:#ff004c;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:white;
+      margin-left:25px;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#00c3ff;
     }
 
     /* Hero */
-    .hero {
-      background: linear-gradient(90deg, #ff512f, #dd2476);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
+
+    .hero{
+      min-height:90vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      flex-direction:column;
+      padding:40px;
     }
 
-    .hero button {
-      padding: 10px 20px;
-      border: none;
-      background: white;
-      color: black;
-      cursor: pointer;
-      margin-top: 10px;
-      border-radius: 5px;
+    .hero h1{
+      font-size:4rem;
+      max-width:900px;
+      line-height:1.2;
+    }
+
+    .hero h1 span{
+      background:linear-gradient(90deg,#ff004c,#00c3ff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      margin-top:20px;
+      color:#cfcfcf;
+      max-width:700px;
+      line-height:1.8;
+    }
+
+    .hero-buttons{
+      margin-top:35px;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .primary{
+      background:linear-gradient(90deg,#ff004c,#ff6600);
+      color:white;
+      box-shadow:0 0 20px rgba(255,0,76,0.4);
+    }
+
+    .secondary{
+      background:transparent;
+      border:2px solid #00c3ff;
+      color:#00c3ff;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px) scale(1.03);
+    }
+
+    /* Stats */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+      padding:50px 8%;
+    }
+
+    .stat-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:20px;
+      padding:30px;
+      text-align:center;
+      backdrop-filter:blur(10px);
+      transition:0.3s;
+    }
+
+    .stat-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .stat-card h2{
+      font-size:2.5rem;
+      color:#00c3ff;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:2.7rem;
+      margin-top:60px;
+      margin-bottom:30px;
     }
 
     /* News */
-    .news {
-      padding: 20px;
-      text-align: center;
+
+    .news-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      padding:30px 8% 80px;
     }
 
-    .card {
-      background: white;
-      margin: 15px auto;
-      padding: 15px;
-      width: 80%;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .news-card{
+      background:rgba(255,255,255,0.05);
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
     }
 
-    /* Footer */
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
+    .news-card:hover{
+      transform:translateY(-12px) scale(1.02);
     }
+
+    .news-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .news-content{
+      padding:20px;
+    }
+
+    .news-content h3{
+      margin-bottom:12px;
+      font-size:1.3rem;
+    }
+
+    .news-content p{
+      color:#cfcfcf;
+      line-height:1.7;
+    }
+
+    .read-btn{
+      margin-top:15px;
+      padding:10px 20px;
+      border:none;
+      border-radius:30px;
+      background:linear-gradient(90deg,#ff004c,#00c3ff);
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    /* Live Match */
+
+    .live-box{
+      margin:60px auto;
+      width:85%;
+      background:linear-gradient(135deg,#111827,#1f2937);
+      border-radius:25px;
+      padding:35px;
+      text-align:center;
+      box-shadow:0 0 30px rgba(0,0,0,0.4);
+    }
+
+    .live-box h2{
+      font-size:2rem;
+      margin-bottom:15px;
+    }
+
+    .score{
+      font-size:3rem;
+      margin:20px 0;
+      color:#00ffb3;
+      font-weight:bold;
+    }
+
+    .countdown{
+      font-size:1.2rem;
+      color:#ffcc00;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:rgba(255,255,255,0.05);
+      color:#aaa;
+      margin-top:60px;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.5rem;
+      }
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav a{
+        margin:0 10px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
   <!-- Header -->
+
   <header>
-    <h1>⚽ My Sports Hub</h1>
+
+    <div class="logo">
+      Sport<span>Surge</span> X
+    </div>
+
     <nav>
       <a href="#">Home</a>
       <a href="#">Football</a>
       <a href="#">Cricket</a>
-      <a href="#">Basketball</a>
+      <a href="#">NBA</a>
+      <a href="#">Live</a>
     </nav>
+
   </header>
 
   <!-- Hero -->
+
   <section class="hero">
-    <h2>Welcome to Sports World</h2>
-    <p>Live scores, news & updates all in one place</p>
-    <button onclick="showAlert()">Get Latest News</button>
+
+    <h1>
+      Experience The Future Of
+      <span>Sports News</span>
+    </h1>
+
+    <p>
+      Dynamic sports news, NBA playoff updates,
+      live scores and premium sports experience.
+    </p>
+
+    <div class="hero-buttons">
+
+      <button class="btn primary" onclick="showNews()">
+        Latest News
+      </button>
+
+      <button class="btn secondary" onclick="subscribe()">
+        Join Community
+      </button>
+
+    </div>
+
   </section>
 
-  <!-- News -->
-  <section class="news">
-    <h2>🔥 Latest Sports News</h2>
+  <!-- Stats -->
 
-    <div class="card">
-      <h3>Football Update</h3>
-      <p>Messi scores a hat-trick in latest match!</p>
+  <section class="stats">
+
+    <div class="stat-card">
+      <h2 id="fans">0</h2>
+      <p>Active Fans</p>
     </div>
 
-    <div class="card">
-      <h3>Cricket Update</h3>
-      <p>Bangladesh wins thrilling match!</p>
+    <div class="stat-card">
+      <h2 id="matches">0</h2>
+      <p>Live Matches</p>
     </div>
 
-    <div class="card">
-      <h3>Basketball Update</h3>
-      <p>NBA finals heat up with close competition.</p>
+    <div class="stat-card">
+      <h2 id="teams">0</h2>
+      <p>Top Teams</p>
     </div>
+
+    <div class="stat-card">
+      <h2 id="views">0</h2>
+      <p>Monthly Views</p>
+    </div>
+
   </section>
 
-  <!-- Footer -->
+  <!-- NBA NEWS -->
+
+  <h1 class="section-title">
+    🏀 NBA Latest News
+  </h1>
+
+  <section class="news-container">
+
+    <!-- NEWS CARD -->
+
+    <div class="news-card">
+
+      <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-content">
+
+        <h3>NBA Finals Heat Up</h3>
+
+        <p>
+          The 2026 NBA Playoffs are reaching another level with dramatic performances and record-breaking moments.
+        </p>
+
+        <button class="read-btn" onclick="openNBAnews()">
+          Read Full News
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- NEWS 2 -->
+
+    <div class="news-card">
+
+      <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-content">
+
+        <h3>Victor Wembanyama Making History</h3>
+
+        <p>
+          Wembanyama continues dominating the playoffs with historic performances for the Spurs.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- NEWS 3 -->
+
+    <div class="news-card">
+
+      <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="news-content">
+
+        <h3>Knicks Crushing 76ers</h3>
+
+        <p>
+          New York now lead the playoff series 3-0 after another dominant victory.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- LIVE MATCH -->
+
+  <div class="live-box">
+
+    <h2>🔴 Live Match</h2>
+
+    <p>Barcelona vs Real Madrid</p>
+
+    <div class="score" id="score">
+      2 : 1
+    </div>
+
+    <div class="countdown">
+      Next update in
+      <span id="timer">10</span>s
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
   <footer>
-    <p>© 2026 My Sports Hub | All Rights Reserved</p>
+    © 2026 SportSurge X | Dynamic Sports Platform
   </footer>
 
+  <!-- JavaScript -->
+
   <script>
-    function showAlert() {
-      alert("🔥 Latest Sports News Loading...");
+
+    /* Counter Animation */
+
+    function animateValue(id,start,end,duration){
+
+      let obj=document.getElementById(id);
+      let range=end-start;
+      let current=start;
+
+      let increment=end>start ? 1 : -1;
+
+      let stepTime=Math.abs(Math.floor(duration/range));
+
+      let timer=setInterval(function(){
+
+        current+=increment;
+
+        obj.innerHTML=current+"+";
+
+        if(current==end){
+          clearInterval(timer);
+        }
+
+      },stepTime);
+
     }
+
+    animateValue("fans",0,500,2000);
+    animateValue("matches",0,120,2000);
+    animateValue("teams",0,85,2000);
+    animateValue("views",0,900,2000);
+
+    /* Buttons */
+
+    function showNews(){
+      alert("🔥 Loading Latest Sports News...");
+    }
+
+    function subscribe(){
+      alert("✅ Welcome To SportSurge X Community!");
+    }
+
+    /* Live Score */
+
+    let countdown=10;
+
+    setInterval(()=>{
+
+      countdown--;
+
+      document.getElementById("timer").innerText=countdown;
+
+      if(countdown<=0){
+
+        countdown=10;
+
+        let score1=Math.floor(Math.random()*5);
+        let score2=Math.floor(Math.random()*5);
+
+        document.getElementById("score").innerText=
+        `${score1} : ${score2}`;
+
+      }
+
+    },1000);
+
+    /* NBA FULL NEWS */
+
+    function openNBAnews(){
+
+      alert(`
+
+🏀 NBA Latest News Today (May 10, 2026)
+
+🔥 Oklahoma City Thunder one step away from Western Conference Finals
+
+Oklahoma City Thunder completely dominated Los Angeles Lakers in Game 3 with a huge 131-108 victory and now lead the series 3-0.
+
+Young guard Ajay Mitchell shocked everyone with 24 points, while OKC’s depth and defense continue to look championship-level.
+
+👑 Victor Wembanyama making playoff history
+
+39 points
+15 rebounds
+5 blocks
+
+The Spurs defeated the Timberwolves 115-108 and now lead the series 2-1.
+
+🗽 Knicks crushing the 76ers
+
+New York Knicks are now leading 3-0 against the Philadelphia 76ers.
+
+Jalen Brunson continues to dominate while Philadelphia collapsed again in the fourth quarter.
+
+🏀 Steve Kerr staying with the Warriors
+
+Steve Kerr reportedly signed a new two-year contract extension with Golden State Warriors.
+
+📈 NBA Playoffs ratings exploding
+
+The 2026 NBA Playoffs are officially the most watched first round since 1993.
+
+📅 Today’s Key Playoff Games
+
+Knicks vs 76ers — Game 4
+Spurs vs Timberwolves — Game 4
+
+      `);
+
+    }
+
   </script>
 
 </body>
